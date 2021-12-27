@@ -23,7 +23,7 @@ public class MultidimensionalArray {
         showArray(SIZE, colors);
 
         System.out.println();
-        System.out.println("На какой угол нужно повернуть Матрику? (90/180/270/360)");
+        System.out.println("На какой угол нужно повернуть Матрицу? (90/180/270/360)");
         choosRotation(colors);
     }
 
