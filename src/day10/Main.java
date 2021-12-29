@@ -2,6 +2,8 @@ package day10;
 
 import java.util.Date;
 
+import static day10.Utils.DateUtil.addSDay;
+
 /**
  * @author KAU
  * @project Netology
@@ -9,6 +11,9 @@ import java.util.Date;
  */
 public class Main {
     public static void main(String[] args) {
+
+        System.out.println(addSDay("2021-12-29", 5));
+
         Book bookUV = new Book("Унесенные ветром", "Маргарет Митчелл", 450, new Date(160833600000L));
 
         User userAlexey = new User("Alexey Alexeevich");
