@@ -6,5 +6,5 @@ package day10;
  * @create 2021-12-27 23:32
  */
 public interface Provider {
-    Book providerBook(); //поставщик книг (приносит книги)
+    void providerBook(Book book); //поставщик книг (приносит книги)
 }

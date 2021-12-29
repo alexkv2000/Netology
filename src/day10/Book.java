@@ -72,10 +72,11 @@ public class Book {
         this.author = author;
         this.countPage = countPage > 0 ? countPage : 0;
         if (dateRegistered == null) {
-            this.dateRegistered = new Date();
+            this.status = statusBook.OTHER;
         } else {
+            this.status = statusBook.RECEIVED;
             this.dateRegistered = dateRegistered;
         }
-        this.status = statusBook.RECEIVED;
+
     }
 }

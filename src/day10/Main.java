@@ -2,8 +2,6 @@ package day10;
 
 import java.util.Date;
 
-import static day10.Utils.DateUtil.addSDay;
-
 /**
  * @author KAU
  * @project Netology
@@ -11,8 +9,30 @@ import static day10.Utils.DateUtil.addSDay;
  */
 public class Main {
     public static void main(String[] args) {
+        //userExample();
 
-        System.out.println(addSDay("2021-12-29", 5));
+        //создаем поставщика
+        provaiderExample();
+
+
+    }
+
+    private static void provaiderExample() {
+        Book bookUV = new Book("Унесенные ветром", "Маргарет Митчелл", 450, null);
+        UserProvaider userProvaider = new UserProvaider(bookUV);
+        System.out.println(userProvaider);
+
+        //книги поставщика "оплачено"
+        userProvaider.setPayDelivery(bookUV);
+        System.out.println(userProvaider);
+
+        // доставка книги: статус - RECEIVED и delivery = true
+        userProvaider.providerBook(bookUV);
+        System.out.println(userProvaider);
+    }
+
+    private static void userExample() {
+        //System.out.println(addSDay("2021-12-28", 5));
 
         Book bookUV = new Book("Унесенные ветром", "Маргарет Митчелл", 450, new Date(160833600000L));
 
@@ -50,8 +70,6 @@ public class Main {
         bookStrugackih.setUserOut(userAlexey);
         System.out.println(userAlexey.toString());
         System.out.println(bookStrugackih.toString());
-
-
     }
 
     private static void ShowStatusBook(Book book) {
