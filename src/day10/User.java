@@ -70,7 +70,7 @@ public class User extends DateUtil implements Reader, Librarian {
     }
 
     @Override
-    public void takeBook(Book book, int toDays, User user) {  //брать книгу
+    public void takeBook(Book book, int toDays) {  //брать книгу
         if ((book.status == Book.statusBook.RECEIVED && book.giveOut == false) ||
                 (book.status == Book.statusBook.RECEIVED && book.giveOut == null)) { //книга в наличии (получена) и не выдана
             this.book = book; // пользователь книгу взял
@@ -79,7 +79,6 @@ public class User extends DateUtil implements Reader, Librarian {
             this.toDays = toDays; // на кол-во дней
             this.dateEnd = addDays(dateTook, toDays); //дата возврата
             this.debtTrue = true; //появилась задолженность
-            book.userOut = user; // установить пользователя
 
         } else if (book.isRescarded()) {
             System.out.println("Книга списана, нет в наличии.");
@@ -94,20 +93,13 @@ public class User extends DateUtil implements Reader, Librarian {
     }
 
     @Override
-    public void returnBook(Book book, User user) { // пользователь книгу отдал
-        if (user.equals(book)) {
-            this.book = null;
-            book.giveOut = false; //книга выдана
-            this.dateTook = null; // когда взял
-            this.toDays = 0; // на кол-во дней
-            this.dateEnd = null; //дата возврата
-            this.debtTrue = false; //появилась задолженность
-            book.userOut = null;
-        } else {
-            System.out.println("Книга не та!");
-        }
-        ;
-
+    public void returnBook(Book book) { // пользователь книгу отдал
+        this.book = null;
+        book.giveOut = false; //книга выдана
+        this.dateTook = null; // когда взял
+        this.toDays = 0; // на кол-во дней
+        this.dateEnd = null; //дата возврата
+        this.debtTrue = false; //появилась задолженность
     }
 
     @Override
@@ -116,7 +108,6 @@ public class User extends DateUtil implements Reader, Librarian {
         bookNew.status = Book.statusBook.ORDER;
         this.book = bookNew;
         this.book.giveOut = true;
-        this.book.userOut = user;
 
         book.giveOut = true;
         return bookNew;

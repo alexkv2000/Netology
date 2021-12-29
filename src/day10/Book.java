@@ -14,7 +14,6 @@ public class Book {
     statusBook status;
     Date dateRegistered; // дата поступления книги
     Boolean giveOut; //книга выдана
-    User userOut; //кому выдана
 
     public enum statusBook {
         ORDER, //заказ
@@ -28,7 +27,6 @@ public class Book {
         this.status = statusBook.DISCARDED;
         this.dateRegistered = new Date(); // дата поступления/списания книги
         this.giveOut = false; //книга выдана
-        this.userOut = null; //кому выдана
     }
 
     public boolean isRescarded() { //проверка на списания книги
@@ -46,14 +44,12 @@ public class Book {
             System.out.println("Книга списана, ее нельзя выдать.");
         } else {
             this.giveOut = true;
-            this.userOut = userOut;
             System.out.printf("Книга выдана: %s.", userOut.getFio());
         }
     }
 
     public void setUserIn(User userIn) { // возврат книги
         this.giveOut = false;
-        this.userOut = null;
     }
 
     @Override

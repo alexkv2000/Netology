@@ -19,29 +19,29 @@ public class Main {
         User userIvan = new User("Ivan Ivanovich");
         showTakenBook(userPetr, bookUV);
 
-        userIvan.takeBook(bookUV, 30, userIvan);
+        userIvan.takeBook(bookUV, 30);
         System.out.println(userIvan.toString());
         showTakenBook(userIvan, bookUV);
 
-        userIvan.returnBook(bookUV, userIvan);
+        userIvan.returnBook(bookUV);
         showTakenBook(userIvan, bookUV);
         ShowStatusBook(bookUV);
 
         bookUV.setRescarded();
-        userIvan.takeBook(bookUV, 30, userIvan);
+        userIvan.takeBook(bookUV, 30);
         System.out.println(userIvan.toString());
         System.out.println(bookUV.toString());
         System.out.println(bookStrugackih.toString());
         ShowStatusBook(bookUV);
         showTakenBook(userAlexey, bookStrugackih);
 
-        userAlexey.takeBook(bookStrugackih, 20, userAlexey);
+        userAlexey.takeBook(bookStrugackih, 20);
         System.out.println("======================");
         bookStrugackih.setStatus(Book.statusBook.RECEIVED);
         System.out.println(userAlexey.toString());
         System.out.println(bookStrugackih.toString());
 
-        userAlexey.takeBook(bookStrugackih, 20, userAlexey);
+        userAlexey.takeBook(bookStrugackih, 20);
         bookStrugackih.setUserOut(userAlexey);
         System.out.println(userAlexey.toString());
         System.out.println(bookStrugackih.toString());
@@ -51,17 +51,6 @@ public class Main {
 
     private static void ShowStatusBook(Book book) {
         String str;
-        if (book.userOut != null) {
-            str = "Book{" +
-                    "name='" + book.name + '\'' +
-                    ", author='" + book.author + '\'' +
-                    ", countPage=" + book.countPage +
-                    ", status=" + book.status +
-                    ", dateRegistered=" + book.dateRegistered +
-                    ", giveOut=" + book.giveOut +
-                    ", userOut=" + book.userOut.getFio() +
-                    '}';
-        } else {
             str = "Book{" +
                     "name='" + book.name + '\'' +
                     ", author='" + book.author + '\'' +
@@ -70,8 +59,6 @@ public class Main {
                     ", dateRegistered=" + book.dateRegistered +
                     ", giveOut=" + book.giveOut +
                     '}';
-
-        }
         System.out.println(str);
     }
 
