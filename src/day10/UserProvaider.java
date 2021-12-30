@@ -2,19 +2,22 @@ package day10;
 
 import static day10.Book.statusBook.*;
 
-public class UserProvaider implements Provider {
+public class UserProvaider extends User implements Provider {
     Book book;
     Boolean delivery; //false - принял заказ поставки ,true - поставил книгу
 
     public UserProvaider(Book book) {
-        book.status = ORDER;
+        book.setStatus(ORDER);
+        book.setGiveOut(false);
         this.book = book; // статус - "заказ"
-        delivery = false; //принял заказ поставки
+        this.delivery = false; //принял заказ поставки
     }
 
     public void setPayDelivery(Book book) {//статус - "получено"
-        book.status = PAID;
-        this.book.status = book.status.PAID;
+        book.setStatus(PAID);
+        book.setGiveOut(false);
+        this.book.setStatus(book.getStatus());
+        this.book.setGiveOut(false);
     }
 
     public boolean isDelivery() {
@@ -23,8 +26,10 @@ public class UserProvaider implements Provider {
 
     @Override
     public void providerBook(Book book) { // доставка книги
-        book.status = RECEIVED;
-        this.book.status = RECEIVED;
+        book.setStatus(RECEIVED);
+        book.setGiveOut(false);
+        this.book.setStatus(RECEIVED);
+        this.book.setGiveOut(false);
         this.delivery = true;
     }
 

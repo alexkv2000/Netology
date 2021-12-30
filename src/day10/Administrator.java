@@ -2,13 +2,12 @@ package day10;
 
 /**
  * @author KAU
- * @project Netology
- * @create 2021-12-27 23:34
  */
 public interface Administrator {
-    Book findBook(Book book); // поиск книги
 
-    Book giveOutBook(User user); // выдать книгу
+    Book findBook(String sBook, Book[] books);// поиск книги
 
-    String notification(Reader reader); //уведомить о просрочке времени возврата
+    Book giveOutBook(User user, Book book, int days); // выдать книгу
+
+    String notification(User user); //уведомить о просрочке времени возврата
 }

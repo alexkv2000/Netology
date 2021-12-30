@@ -33,10 +33,18 @@ public class Book {
         return this.status.equals(statusBook.DISCARDED) ? true : false;
     }
 
+    public void setGiveOut(Boolean giveOut) {
+        this.giveOut = giveOut;
+    }
+
     public void setStatus(statusBook status) { //новый статус если НЕ списана
         if (!isRescarded()) {
             this.status = status;
         }
+    }
+
+    public statusBook getStatus() {
+        return status;
     }
 
     public void setUserOut(User userOut) { //кому выдана
@@ -55,14 +63,15 @@ public class Book {
     @Override
     public String toString() {
         String str;
-
         str = "Book{" +
-                "name='" + name + '\'' +
-                ", author='" + author + '\'' +
-                ", countPage=" + countPage +
-                ", status=" + status +
-                ", giveOut=" + giveOut +
+                "name='" + this.name + '\'' +
+                ", author='" + this.author + '\'' +
+                ", countPage=" + this.countPage +
+                ", status=" + this.status +
+                ", dateRegistered=" + this.dateRegistered +
+                ", giveOut=" + this.giveOut +
                 '}';
+        System.out.println(str);
         return str;
     }
 
@@ -70,6 +79,7 @@ public class Book {
     public Book(final String name, final String author, int countPage, Date dateRegistered) {
         this.name = name;
         this.author = author;
+        this.giveOut = false;
         this.countPage = countPage > 0 ? countPage : 0;
         if (dateRegistered == null) {
             this.status = statusBook.OTHER;
