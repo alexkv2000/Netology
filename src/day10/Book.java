@@ -4,8 +4,6 @@ import java.util.Date;
 
 /**
  * @author KAU
- * @project Netology
- * @create 2021-12-27 23:41
  */
 public class Book {
     String name;
@@ -30,7 +28,7 @@ public class Book {
     }
 
     public boolean isRescarded() { //проверка на списания книги
-        return this.status.equals(statusBook.DISCARDED) ? true : false;
+        return this.status.equals(statusBook.DISCARDED);
     }
 
     public void setGiveOut(Boolean giveOut) {
@@ -80,7 +78,7 @@ public class Book {
         this.name = name;
         this.author = author;
         this.giveOut = false;
-        this.countPage = countPage > 0 ? countPage : 0;
+        this.countPage = Math.max(countPage, 0);
         if (dateRegistered == null) {
             this.status = statusBook.OTHER;
         } else {

@@ -95,8 +95,7 @@ public class User extends DateUtil implements Reader {
 
     @Override
     public void takeBook(Book book, int toDays) {  //брать книгу
-        if ((book.status == Book.statusBook.RECEIVED && book.giveOut == false) ||
-                (book.status == Book.statusBook.RECEIVED && book.giveOut == null)) { //книга в наличии (получена) и не выдана
+        if (book.status == Book.statusBook.RECEIVED && !book.giveOut) { //книга в наличии (получена) и не выдана
             book.giveOut = true; //книга выдана
             this.book = book; // пользователь книгу взял
             this.dateTook = new Date(); // когда взял
