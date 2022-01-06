@@ -1,11 +1,11 @@
-package day10;
+package day10.Librarry;
 
 /**
  * @author KAU
  */
 public interface Administrator {
 
-    Book findBook(String sBook, Book[] books);// поиск книги
+    boolean findBook(String sBook, Book[] books);// поиск книги
 
     Book giveOutBook(User user, Book book, int days); // выдать книгу
 

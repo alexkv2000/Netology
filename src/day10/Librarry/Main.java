@@ -1,4 +1,4 @@
-package day10;
+package day10.Librarry;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,32 +9,40 @@ import java.util.Date;
  */
 public class Main {
     public static void main(String[] args) throws ParseException {
-        Book bookUV = new Book("Унесенные ветром", "Маргарет Митчелл", 450, new SimpleDateFormat("dd.MM.yyyy").parse("28.12.2016"));
-        Book bookHT = new Book("Сердца трех", "Джек Лондон", 850, new SimpleDateFormat("dd.MM.yyyy").parse("10.04.2004"));
-        Book bookS = new Book("Понедельник начинается с субботы", "Братья Стругацкие", 738, null);
-
+        Book[] books = {
+                new Book("Унесенные ветром", "Маргарет Митчелл", 450, new SimpleDateFormat("dd.MM.yyyy").parse("28.12.2016")),
+                new Book("Сердца трех", "Джек Лондон", 850, new SimpleDateFormat("dd.MM.yyyy").parse("10.04.2004")),
+                new Book("Понедельник начинается с субботы", "Братья Стругацкие", 738, null),
+                new Book("Унесенные ветром", "Маргарет Митчелл", 450, new SimpleDateFormat("dd.MM.yyyy").parse("01.12.2020"))
+        };
         //userExample();
         //provaiderExample();
         //LibrariExample();
-        AdminExample(bookUV, bookHT, bookS);
+        AdminExample(books);
     }
 
-    private static void AdminExample(Book bookUV, Book bookHT, Book bookS) throws ParseException {
-        Book[] books = {bookUV, bookHT, bookS};
-        UserAdministrator userAdministrator = new UserAdministrator("Admin", books[0], new Date(), 8, false);
-        showTakenBook(userAdministrator);
+    private static void AdminExample(Book[] books) throws ParseException {
+        UserAdministrator userAdministrator = new UserAdministrator("Admin", books[2], new Date(), 8, false);
+        User userPetr = new User("Petr Petrivich", books[0], new SimpleDateFormat("dd.MM.yyyy").parse("10.04.2021"), 4, true);
 
-        User userPetr = new User("Petr Petrivich", bookUV, new SimpleDateFormat("dd.MM.yyyy").parse("10.04.2021"), 4, true);
         userAdministrator.giveOutBook(userPetr, books[1], 7); //проверка на задолженность при выдачи книги. не выдавать.
+
+        showTakenBook(userAdministrator);
         showTakenBook(userPetr);
-        userAdministrator.notification(userPetr);//проверка на задолженность
+
+        System.out.println("проверка на задолженность");
+        userAdministrator.notification(userPetr);
+        userAdministrator.notification(userAdministrator);
         System.out.println();
 
-        //поиск по названию или автору книги
+        System.out.println("проверка после возврата книги");
+        userAdministrator.returnBook(books[2]);
+        userAdministrator.notification(userAdministrator);
+
+        System.out.println("поиск по названию или автору книги");
         userAdministrator.findBook("Унесенные ветром", books);
         userAdministrator.findBook("Братья Стругацкие", books);
         userAdministrator.findBook("Джек Лондон", books);
-        userAdministrator.findBook("Сердца", books);
 
     }
 

@@ -1,6 +1,6 @@
-package day10;
+package day10.Librarry;
 
-import static day10.Book.statusBook.*;
+import static day10.Librarry.Book.statusBook.*;
 
 public class UserProvaider extends User implements Provider {
     Book book;

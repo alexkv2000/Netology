@@ -1,8 +1,8 @@
-package day10;
+package day10.Librarry;
 
 import java.util.Date;
 
-import static day10.Book.statusBook.ORDER;
+import static day10.Librarry.Book.statusBook.ORDER;
 
 public class UserLibrarian extends User implements Librarian {
     Book book;

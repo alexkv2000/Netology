@@ -1,8 +1,5 @@
-package day10;
+package day10.Librarry;
 
-/**
- * @author KAU
- */
 public interface Librarian {
     Book orderNewBook(Book book); //заказать книгу
 }
