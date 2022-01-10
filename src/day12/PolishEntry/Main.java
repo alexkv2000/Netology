@@ -18,11 +18,9 @@ public class Main {
         LinkedList<Integer> numbers = new LinkedList<>(); //Очередь для цифр
         Stack<String> sign = new Stack<>(); //Стек для операций
 
-        Matcher matcher = getMatcher(input, "[\\d]+");
-        addElementForMatcher(input, numbers, matcher, false);
+        addElementForMatcher(input, numbers, getMatcher(input, "[\\d]+"), false);
+        addElementForMatcher(input, sign, getMatcher(input, "[-*/+−]"), true);
 
-        matcher = getMatcher(input, "[-*/+−]");
-        addElementForMatcher(input, sign, matcher, true);
         System.out.println();
 
         //вывод на консоль
