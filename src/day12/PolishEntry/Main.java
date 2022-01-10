@@ -11,8 +11,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите математическую формулу:");
-        //String input = scanner.nextLine();
-        String input = "7 − 2 * 3";
+        String input = scanner.nextLine();
+        //String input = "7 − 2 * 3";
         System.out.println(input);
 
         LinkedList<Integer> numbers = new LinkedList<>(); //Очередь для цифр
