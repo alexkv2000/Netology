@@ -15,7 +15,7 @@ public class Account {
 
     @Override
     public String toString() {
-        return String.format("Счет номер: %s, владелец: %s, сумма: %s", number, owner, amount);
+        return String.format("Счет номер: %-15s, владелец: %-15s, сумма: %12.2f", number, owner, amount);
     }
 
     public void setAmount(BigDecimal amount) {

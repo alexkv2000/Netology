@@ -27,6 +27,6 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return String.format("со счета: %s, на счет: %s, сумма: %s", accountFrom.getNumber(), accountTo.getNumber(), amount);
+        return String.format("со счета: %s, на счет: %s, сумма: %.2f", accountFrom.getNumber(), accountTo.getNumber(), amount);
     }
 }
