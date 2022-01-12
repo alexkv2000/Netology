@@ -1,4 +1,4 @@
-package day13.PhoneDirectory;
+package day14.TreeMap;
 
 public class Contact {
     String name; //имя

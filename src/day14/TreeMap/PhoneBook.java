@@ -1,8 +1,11 @@
-package day13.PhoneDirectory;
+package day14.TreeMap;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public class PhoneBook extends Contact {
     private static final String ANSI_RED = "\u001B[41m"; // подцветка разницы доход - расход - красный фон
@@ -56,7 +59,7 @@ public class PhoneBook extends Contact {
         if (contactList.contains(contact)) {
             contactList.remove(contactList.indexOf(contact));//удаляем по индексу найденного элемента
         } else {
-            System.out.printf("%s отсутствует. %sУдаление невозможно из %s%s\n", contact, ANSI_RED, groupContacts, ANSI_RESET);
+            System.out.printf("%s отсутствует. %sУдаление невозможно из %s%s\n", contact, ANSI_BLUE, groupContacts, ANSI_RESET);
         }
         ;
     }
@@ -117,7 +120,7 @@ public class PhoneBook extends Contact {
             }
         }
         if (!flag) {
-            System.out.printf("  %sконтакт по номеру телефона %s не найден%s\n", ANSI_RED, phone, ANSI_RESET);
+            System.out.printf("  %sконтакт по номеру телефона %s не найден%s\n", ANSI_YELLOW, phone, ANSI_RESET);
         }
         return listnew;
     }
