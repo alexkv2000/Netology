@@ -17,8 +17,8 @@ public class GroupContacts {
 
     @Override
     public String toString() {
-        return "\nGroupContacts{" +
-                "name='" + name + '\'' +
-                '}';
+        return "Группа {" +
+                "'" + name + '\'' +
+                "}";
     }
 }
