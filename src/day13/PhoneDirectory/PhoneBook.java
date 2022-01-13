@@ -45,7 +45,7 @@ public class PhoneBook extends Contact {
         if (contactList.contains(contact)) {
             contactList.remove(contactList.indexOf(contact));//удаляем по индексу найденного элемента
         } else {
-            System.out.println("Контакта нет в данной группе");
+            System.out.printf("%s нет в %s. Удаление невозможно.\n\n",contact, groupContacts);
         }
         ;
     }

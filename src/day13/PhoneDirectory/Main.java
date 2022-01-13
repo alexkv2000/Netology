@@ -50,7 +50,7 @@ public class Main {
         System.out.println("*           поиск контакта в группе               *");
         System.out.println("***************************************************");
         phoneBook.searchContact(myGroup, Alex);
-        phoneBook.searchContact(myGroup, Alex);
+        phoneBook.searchContact(myGroup, Ruta);
 
         //поиск Контакта по номеру телефона
         System.out.println("*       поиск Контакта по номеру телефона         *");
