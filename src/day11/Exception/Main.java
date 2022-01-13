@@ -9,6 +9,14 @@ public class Main {
 
     private final static int AGE = 18;
     private static final String ANSI_RED = "\u001B[41m"; // подцветка разницы доход - расход - красный фон
+    private static final String ANSI_BLACK = "\u001b[30m"; // черный
+    private static final String ANSI_SCARLET = "\u001b[31m"; // алый
+    private static final String ANSI_GREEN = "\u001b[32m"; // зеленый
+    private static final String ANSI_YELLOW = "\u001b[33m"; // Жёлтый
+    private static final String ANSI_BLUE = "\u001b[34m"; // Синий
+    private static final String PURPLE = "\u001b[35m"; // Пурпурный
+    private static final String ANSI_CYAN = "\u001b[36m"; // Голубой
+    private static final String ANSI_WHITE = "\u001b[37m"; // Белый
     private static final String ANSI_RESET = "\u001B[0m"; // конец подцветки - черный фон
 
     public static void main(String[] args) throws UserNotFoundException, AccessDeniedException {

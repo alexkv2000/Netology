@@ -1,10 +1,24 @@
-package day13.PhoneDirectory;
+package day14.TreeMap;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public class PhoneBook extends Contact {
+    private static final String ANSI_RED = "\u001B[41m"; // подцветка разницы доход - расход - красный фон
+    private static final String ANSI_BLACK = "\u001b[30m"; // черный
+    private static final String ANSI_SCARLET = "\u001b[31m"; // алый
+    private static final String ANSI_GREEN = "\u001b[32m"; // зеленый
+    private static final String ANSI_YELLOW = "\u001b[33m"; // Жёлтый
+    private static final String ANSI_BLUE = "\u001b[34m"; // Синий
+    private static final String PURPLE = "\u001b[35m"; // Пурпурный
+    private static final String ANSI_CYAN = "\u001b[36m"; // Голубой
+    private static final String ANSI_WHITE = "\u001b[37m"; // Белый
+    private static final String ANSI_RESET = "\u001B[0m"; // конец подцветки - черный фон
+
 
     HashMap<GroupContacts, List<Contact>> listContacts = new HashMap<GroupContacts, List<Contact>>();
 
@@ -45,7 +59,7 @@ public class PhoneBook extends Contact {
         if (contactList.contains(contact)) {
             contactList.remove(contactList.indexOf(contact));//удаляем по индексу найденного элемента
         } else {
-            System.out.println("Контакта нет в данной группе");
+            System.out.printf("%s отсутствует. %sУдаление невозможно из %s%s\n", contact, ANSI_BLUE, groupContacts, ANSI_RESET);
         }
         ;
     }
@@ -106,7 +120,7 @@ public class PhoneBook extends Contact {
             }
         }
         if (!flag) {
-            System.out.printf(" контакт по номеру телефона %s не найден\n", phone);
+            System.out.printf("  %sконтакт по номеру телефона %s не найден%s\n", ANSI_YELLOW, phone, ANSI_RESET);
         }
         return listnew;
     }
