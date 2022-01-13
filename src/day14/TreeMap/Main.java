@@ -1,5 +1,7 @@
 package day14.TreeMap;
 
+import java.time.LocalDateTime;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -41,30 +43,41 @@ public class Main {
         //    отобразить список групп
         System.out.println("*            отобразить список групп              *");
         System.out.println("***************************************************");
-        phoneBook.consolPhoneBookGroup(myGroup);
-        phoneBook.consolPhoneBookGroup(allGroup);
-        phoneBook.consolPhoneBookGroup(otherGroup);
-        phoneBook.consolPhoneBookGroup(adminGroup);
+//        phoneBook.consolPhoneBookGroup(myGroup);
+//        phoneBook.consolPhoneBookGroup(allGroup);
+//        phoneBook.consolPhoneBookGroup(otherGroup);
+//        phoneBook.consolPhoneBookGroup(adminGroup);
         //--------------------
         //поиск контакта в группе
         System.out.println("*           поиск контакта в группе               *");
         System.out.println("***************************************************");
-        phoneBook.searchContact(myGroup, Alex);
-        phoneBook.searchContact(myGroup, Alex);
+//        phoneBook.searchContact(myGroup, Alex);
+//        phoneBook.searchContact(myGroup, Alex);
 
         //поиск Контакта по номеру телефона
         System.out.println("*       поиск Контакта по номеру телефона         *");
         System.out.println("***************************************************");
-        phoneBook.searchContact("+7960111118");
-        phoneBook.searchContact("+79601888888");
+//        phoneBook.searchContact("+7960111118");
+//        phoneBook.searchContact("+79601888888");
 
         System.out.println("*             удалить контакт из группы            *");
         System.out.println("***************************************************");
+//        phoneBook.consolPhoneBookGroup(otherGroup);
+//        phoneBook.delContact(otherGroup, Alex);
+//        phoneBook.delContact(otherGroup, Valery);
+//        phoneBook.consolPhoneBookGroup(otherGroup);
+        System.out.println("*           список пропущенных звонков            *");
+        System.out.println("***************************************************");
+        MissedCalls missedCalls = new MissedCalls();
+        System.out.println(missedCalls.setMissedCalls(LocalDateTime.now(), "+79601777777"));
 
-        phoneBook.consolPhoneBookGroup(otherGroup);
-        phoneBook.delContact(otherGroup, Alex);
-        phoneBook.delContact(otherGroup, Valery);
-        phoneBook.consolPhoneBookGroup(otherGroup);
+        System.out.println(missedCalls.setMissedCalls(LocalDateTime.now(), "+79601555787"));
+
+        System.out.println(missedCalls.setMissedCalls(LocalDateTime.now(), "+79622555555"));
+
+        System.out.println(missedCalls.setMissedCalls(LocalDateTime.now(), "+79601558899"));
+
+        //missedCalls.getMissedCalls();
     }
 
 }
