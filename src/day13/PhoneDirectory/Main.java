@@ -1,5 +1,9 @@
 package day13.PhoneDirectory;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -12,59 +16,57 @@ public class Main {
         Contact Jhon = phoneBook.setName("Jhon", "+79601888888");
         Contact Jgarge = phoneBook.setName("Jarge", "+79601777777");
         Contact Ruta = phoneBook.setName("Ruta", "+79601111111");
-        Contact Alex = phoneBook.setName("Alex", "+79601111199");
+        Contact Alex = phoneBook.setName("Alex", "+79601999999");
         Contact Adam = phoneBook.setName("Adam", "+79601555555");
         Contact Valery = phoneBook.setName("Valery");
         Valery.setPhoneNumber("+79991222222");
+
 
         GroupContacts allGroup = phoneBook.addGroup("All");
         GroupContacts myGroup = phoneBook.addGroup("My");
         GroupContacts otherGroup = phoneBook.addGroup("Other");
         GroupContacts adminGroup = phoneBook.addGroup("Admin");
 
-        phoneBook.addContact(Ruta, allGroup);
-        phoneBook.addContact(Jgarge, allGroup);
-        phoneBook.addContact(Alex, allGroup);
-        phoneBook.addContact(Adam, allGroup);
+        List<Contact> contactListAll = new LinkedList<Contact>();
+        contactListAll.add(Jhon);
+        contactListAll.add(Jgarge);
+        contactListAll.add(0, Ruta);
+        contactListAll.add(1, Alex);
+        contactListAll.add(Adam);
+
+        List<Contact> contactListMy = new LinkedList<Contact>();
+        contactListMy.add(Ruta);
+        contactListMy.add(Alex);
+
+        List<Contact> contactListOther = new LinkedList<Contact>();
+        phoneBook.addContact(Adam, otherGroup);
+
+        LinkedList contactListAdmin = new LinkedList<>();
+        phoneBook.addContact(Valery, adminGroup);
         phoneBook.addContact(Valery, allGroup);
-        phoneBook.addContact(Jhon, allGroup);
-
-        phoneBook.addContact(Ruta, myGroup);
-        phoneBook.addContact(Alex, myGroup);
-
         phoneBook.addContact(Alex, adminGroup);
 
-        phoneBook.addContact(Valery, otherGroup);
-        phoneBook.addContact(Adam, otherGroup);
-        phoneBook.addContact(Jhon, otherGroup);
+        phoneBook.setListContacts(myGroup, contactListMy);
+        phoneBook.setListContacts(allGroup, contactListAll);
+        phoneBook.setListContacts(otherGroup, contactListOther);
 
-        //    отобразить список групп
-        System.out.println("*            отобразить список групп              *");
-        System.out.println("***************************************************");
-        phoneBook.consolPhoneBookGroup(myGroup);
-        phoneBook.consolPhoneBookGroup(allGroup);
-        phoneBook.consolPhoneBookGroup(otherGroup);
-        phoneBook.consolPhoneBookGroup(adminGroup);
+
+        //    отобразить List
+        consolPhone(phoneBook, myGroup);
+        consolPhone(phoneBook, allGroup);
+        consolPhone(phoneBook, otherGroup);
+        consolPhone(phoneBook, adminGroup);
         //--------------------
-        //поиск контакта в группе
-        System.out.println("*           поиск контакта в группе               *");
-        System.out.println("***************************************************");
-        phoneBook.searchContact(myGroup, Alex);
-        phoneBook.searchContact(myGroup, Alex);
+        //TODO поиск Контакта по номеру телефона
 
-        //поиск Контакта по номеру телефона
-        System.out.println("*       поиск Контакта по номеру телефона         *");
-        System.out.println("***************************************************");
-        phoneBook.searchContact("+7960111118");
-        phoneBook.searchContact("+79601888888");
-
-        System.out.println("*             удалить контакт из группы            *");
-        System.out.println("***************************************************");
-
-        phoneBook.consolPhoneBookGroup(otherGroup);
-        phoneBook.delContact(otherGroup, Alex);
-        phoneBook.delContact(otherGroup, Valery);
-        phoneBook.consolPhoneBookGroup(otherGroup);
     }
 
+
+    private static void consolPhone(PhoneBook phoneBook, GroupContacts group) {
+        for (Map.Entry entry : phoneBook.listContacts.entrySet()) {
+            if (entry.getKey().equals(group)) {
+                System.out.println(entry);
+            }
+        }
+    }
 }
