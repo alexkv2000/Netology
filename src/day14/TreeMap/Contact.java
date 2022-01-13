@@ -34,7 +34,7 @@ public class Contact {
 
     @Override
     public String toString() {
-        return "\n\tКонтакт {" + "имя='" + name + '\'' + ", телефон='" + phoneNumber + '\'' + "}";
+        return "\n\t\tКонтакт {" + "имя='" + name + '\'' + ", телефон='" + phoneNumber + '\'' + "}";
     }
 
 }

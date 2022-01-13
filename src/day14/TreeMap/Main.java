@@ -1,9 +1,7 @@
 package day14.TreeMap;
 
-import java.time.LocalDateTime;
-
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         //Создадим класс Contact c полями: имя и номер телефона (при необходимости переоределим hashCode, equals, toString).
         //Создадим методы для добавления группы и контакта в группы в классе PhoneBook.
@@ -41,43 +39,48 @@ public class Main {
         phoneBook.addContact(Jhon, otherGroup);
 
         //    отобразить список групп
+        System.out.println("***************************************************");
         System.out.println("*            отобразить список групп              *");
         System.out.println("***************************************************");
-//        phoneBook.consolPhoneBookGroup(myGroup);
-//        phoneBook.consolPhoneBookGroup(allGroup);
-//        phoneBook.consolPhoneBookGroup(otherGroup);
-//        phoneBook.consolPhoneBookGroup(adminGroup);
-        //--------------------
+        phoneBook.consolPhoneBookGroup(myGroup);
+        phoneBook.consolPhoneBookGroup(allGroup);
+        phoneBook.consolPhoneBookGroup(otherGroup);
+        phoneBook.consolPhoneBookGroup(adminGroup);
         //поиск контакта в группе
+        System.out.println("***************************************************");
         System.out.println("*           поиск контакта в группе               *");
         System.out.println("***************************************************");
-//        phoneBook.searchContact(myGroup, Alex);
-//        phoneBook.searchContact(myGroup, Alex);
+        phoneBook.searchContact(myGroup, Alex);
+        phoneBook.searchContact(allGroup, Jhon);
 
         //поиск Контакта по номеру телефона
+        System.out.println("***************************************************");
         System.out.println("*       поиск Контакта по номеру телефона         *");
         System.out.println("***************************************************");
-//        phoneBook.searchContact("+7960111118");
-//        phoneBook.searchContact("+79601888888");
-
+        phoneBook.searchContact("+7960111118", true);
+        phoneBook.searchContact("+79601888888", true);
+        System.out.println("***************************************************");
         System.out.println("*             удалить контакт из группы            *");
         System.out.println("***************************************************");
-//        phoneBook.consolPhoneBookGroup(otherGroup);
-//        phoneBook.delContact(otherGroup, Alex);
-//        phoneBook.delContact(otherGroup, Valery);
-//        phoneBook.consolPhoneBookGroup(otherGroup);
+        System.out.println("Целевая группа удаления контактов: Alex, Valery");
+        phoneBook.consolPhoneBookGroup(otherGroup);
+        phoneBook.delContact(otherGroup, Alex);
+        phoneBook.delContact(otherGroup, Valery);
+        System.out.println("Итоговая  группа после удаления");
+        phoneBook.consolPhoneBookGroup(otherGroup);
+        System.out.println("***************************************************");
         System.out.println("*           список пропущенных звонков            *");
         System.out.println("***************************************************");
         MissedCalls missedCalls = new MissedCalls();
-        System.out.println(missedCalls.setMissedCalls(LocalDateTime.now(), "+79601777777"));
 
-        System.out.println(missedCalls.setMissedCalls(LocalDateTime.now(), "+79601555787"));
+        missedCalls.setMissedCalls("+79601777777");
+        missedCalls.setMissedCalls("+79601555787");
+        missedCalls.setMissedCalls("+79622555555");
+        missedCalls.setMissedCalls("+79601111199");
+        missedCalls.setMissedCalls("+79601558891");
+        missedCalls.setMissedCalls("+79601888888");
 
-        System.out.println(missedCalls.setMissedCalls(LocalDateTime.now(), "+79622555555"));
-
-        System.out.println(missedCalls.setMissedCalls(LocalDateTime.now(), "+79601558899"));
-
-        //missedCalls.getMissedCalls();
+        missedCalls.getMissedCalls(phoneBook);
     }
 
 }
