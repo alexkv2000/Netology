@@ -56,11 +56,7 @@ public class Student {
 
     @Override
     public String toString() {
-<<<<<<< HEAD
-        return "\t - {'" + name + '\'' +
-=======
         return "\t - '" + name + '\'' +
->>>>>>> origin/master
                 ", '" + group + '\'' +
                 ", '" + studentId + '\'' +
                 '}';
@@ -80,9 +76,5 @@ public class Student {
     public int hashCode() {
         return studentId.hashCode();
     }
-<<<<<<< HEAD
-}
-=======
 
 }
->>>>>>> origin/master
