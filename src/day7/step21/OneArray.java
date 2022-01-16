@@ -41,8 +41,10 @@ public class OneArray {
             int nTovar = Integer.parseInt(str);
             int conunt = Integer.parseInt(scanner.next());
 
-            choices[nTovar-1] += conunt;
+            choices[nTovar - 1] += conunt;
             System.out.println(str + "  " + conunt);
+            enterReceipt(names, prices, choices);
+            listOfProducts(names, prices); //список продуктов - вывод экран
         }
         enterReceipt(names, prices, choices);
     }

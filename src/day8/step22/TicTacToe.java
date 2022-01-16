@@ -28,7 +28,7 @@ public class TicTacToe {
 
         while (true) {
             printField(field);
-            System.out.println("Ходят " + (isCrossTurn ? "крестики" : "нолики") + "!");
+            System.out.println("Ходят " + (isCrossTurn ? "крестики" : "нолики") + "! (координаты X, Y через пробел)");
             String input = scanner.nextLine(); // "2 3"
             String[] parts = input.split(" "); // ["2" , "3"]
             int r = Integer.parseInt(parts[0]) - 1; // 2-1 = 1

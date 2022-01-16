@@ -5,28 +5,28 @@ package day6.OnlineReads;
  * @project Netology
  * @create 2021-12-22 15:52
  */
-public class User extends Books {
+public class User {
     protected String email;
     protected String name;
     protected String surname;
     protected boolean online; // статус Online || OFFLine пользователя
-    public String read; // какую книгу читает пользователь
+    public Books read; // какую книгу читает пользователь
 
     static public int totalOnline = 0; // кол-во пользователей OnLine
 
     public String bookReadUserON(Books book) {
         if (!book.isStatusBook()) {
-            bookRead(User.class, book); //меняем статус и запоминам кто взял книгу в Books
-            read = book.getNameBook();
-            return read;
+            book.bookRead(this, book); //меняем статус и запоминам кто взял книгу в Books
+            this.read = book;
+            return read.getNameBook();
         }
         return null;
     }
 
     public String bookReadUserOFF(User user, Books book) {
         if (book.isStatusBook()) {
-            bookRead(User.class, book); //меняем статус и запоминам кто отдал книгу в Books
-            read = "";
+            book.bookRead(user, book); //меняем статус и запоминам кто отдал книгу в Books
+            this.read = null;
         }
         return null;
     }
@@ -34,7 +34,7 @@ public class User extends Books {
     @Override
     public String toString() {
         System.out.printf("%-12s %-12s {%-1s} - статус %8s ", name, surname, email, online ? "OnLine" : "OFFLine");
-        System.out.printf("%s %n", (read.length() > 0) ? ("читает: " + read) : "");
+        System.out.printf("%s \n", this.read != null ? this.read.getNameBook() : "");
         return "";
     }
 
@@ -43,7 +43,7 @@ public class User extends Books {
         this.name = name;
         this.surname = surname;
         this.online = true;
-        this.read = "";
+        this.read = null;
         totalOnline += 1;
     }
 
@@ -84,6 +84,14 @@ public class User extends Books {
 
     public void setEmail(String email) { //смена e-mail
         this.email = email;
+    }
+
+    public String getRead() {
+        String str = "";
+        if (this.read != null) {
+            str = read.getNameBook();
+        }
+        return str;
     }
 
     public void close() {
