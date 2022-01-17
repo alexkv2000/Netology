@@ -30,19 +30,6 @@ public class Books {
         return nameBook;
     }
 
-    public void setNameBook(String nameBook, Author author) {
-        this.idBook = GenerateNumBooks.getId();
-        this.dateRegistered = String.valueOf(new Date());
-        this.nameBook = nameBook;
-        this.author = author;
-        this.statusBook = false;
-    }
-
-    public void setNameOther(int countOfPages, String comments) {
-        this.countOfPages = countOfPages;
-        this.comments = comments;
-    }
-
     public int getCountOfPages() {
         return countOfPages;
     }
@@ -75,10 +62,13 @@ public class Books {
         return "";
     }
 
-    public Books() {
-        super();
-        this.idBook = 0;
+    public Books(String nameBook, Author author, int countOfPages, String comments) {
+        this.idBook = GenerateNumBooks.getId();
         this.dateRegistered = String.valueOf(new Date());
-        this.nameBook = "";
+        this.nameBook = nameBook;
+        this.author = author;
+        this.countOfPages = countOfPages;
+        this.comments = comments;
+        this.statusBook = false;
     }
 }

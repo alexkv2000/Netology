@@ -9,10 +9,10 @@ public class User {
     protected String email;
     protected String name;
     protected String surname;
-    protected boolean online; // статус Online || OFFLine пользователя
-    public Books read; // какую книгу читает пользователь
+    protected boolean online;
+    public Books read;
 
-    static public int totalOnline = 0; // кол-во пользователей OnLine
+    static public int totalOnline = 0;
 
     public String bookReadUserON(Books book) {
         if (!book.isStatusBook()) {
