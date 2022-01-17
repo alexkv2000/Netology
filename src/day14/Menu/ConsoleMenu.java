@@ -18,7 +18,7 @@ public class ConsoleMenu {
         return count;
     }
 
-    public void getNameMenu() {
+    public void listNameMenu() {
         for (Menu str : nameMenu) {
             System.out.println(str.numeric + str.menuItem);
         }
@@ -27,6 +27,11 @@ public class ConsoleMenu {
     public int getMenuNumber(int number) {
         String str = nameMenu.get(number).numeric.replaceAll("\\D+", "");
         return Integer.parseInt(str);
+    }
+
+    public String getMenuCommand(int number) {
+        String str = nameMenu.get(number).command.strip();
+        return str;
     }
 
     @Override
