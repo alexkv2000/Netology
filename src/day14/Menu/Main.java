@@ -10,7 +10,6 @@ public class Main extends Exception {
         mainMenu.setNameMenu(new Menu("2. ", "Delete", "DELETE"));
         mainMenu.setNameMenu(new Menu("3. ", "Show", "SHOW"));
         mainMenu.setNameMenu(new Menu("0. ", "Exit", "EXIT"));
-        //mainMenu.getNameMenu(); //отображение в консоль
 
         ConsoleMenu productMenu = new ConsoleMenu();
         productMenu.setNameMenu(new Menu(" 1. ", "Onion", "SHOWONION"));
@@ -24,47 +23,41 @@ public class Main extends Exception {
             showMenu.listNameMenu();
             try {
                 int choiceMenu = Integer.parseInt(scanner.nextLine());
-                if (showMenu.getCount() < choiceMenu) {
+                if (showMenu.getCount() <= choiceMenu) {
                     throw new MyException();
                 }
-                switch (showMenu.getMenuCommand(choiceMenu)) {
-                    case ("ADD"):
+                if (choiceMenu == 0) {
+                    choiceMenu = 4;
+                }
+                switch (showMenu.getMenuCommand(choiceMenu - 1)) {
+                    case ("ADD"): {
                         System.out.println("Choice 1 " + showMenu.getMenuCommand(0));
                         showMenu = productMenu;
-                        break;
+                    }
                     case ("DELETE"):
                         System.out.println("Choice 2 " + showMenu.getMenuCommand(1));
-                        break;
                     case ("SHOW"):
                         System.out.println("Choice 3 " + showMenu.getMenuCommand(2));
-                        break;
-                    case ("EXIT"):
+                    case ("EXIT"): {
                         System.out.println("Choice 0 " + showMenu.getMenuCommand(3));
                         flag = true;
-                        break;
+                    }
                     case ("SHOWONION"):
                         System.out.println("Choice 1 " + showMenu.getMenuCommand(0));
-                        break;
                     case ("SHOWCARROT"):
                         System.out.println("Choice 2 " + showMenu.getMenuCommand(1));
-                        break;
                     case ("SHOW_TOMATO"):
                         System.out.println("Choice 3 " + showMenu.getMenuCommand(2));
-                        break;
-                    case ("RETURN"):
+                    case ("RETURN"): {
                         System.out.println("Choice 0 " + showMenu.getMenuCommand(3));
                         showMenu = mainMenu;
-                        break;
+                    }
                 }
-
             } catch (Exception e) {
-                System.out.println("Error Choice number");
+                System.out.println("Формат вводе не верный");
             } catch (MyException e) {
-                System.out.println("!!!!!!!!!");
+                System.out.println("Данные ввода не верные");
             }
-
-
         }
-
     }
 }
