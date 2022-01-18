@@ -11,4 +11,6 @@ public class AnsiColor {
     static final String ANSI_CYAN = "\u001b[36m"; // Голубой
     static final String ANSI_WHITE = "\u001b[37m"; // Белый
     static final String ANSI_RESET = "\u001B[0m"; // конец подцветки - черный фон
+
+    static final String ANSI_CLEAR_TERMINAL = "\033[2J";
 }
