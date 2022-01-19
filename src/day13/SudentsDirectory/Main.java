@@ -4,43 +4,60 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
+import static day13.SudentsDirectory.ConsolColor.*;
+
 public class Main {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         HashSet<Student> hashSet = new HashSet<>();
-        System.out.println("Введите информацию о студенте: 'ФИО, номер группы, номер студенческого билета'");
-        String student = scanner.nextLine();
-        HashSet<Student> stdIi = setNewStudent(student, hashSet);
+        eConsole("Введите информацию о студенте: 'ФИО, номер группы, номер студенческого билета'", ANSI_RESET);
+
+        try {
+            String student = scanner.nextLine();
+            setNewStudent(student, hashSet);
+        } catch (Exception e) {
+            eConsole("Данные введены некорректно.", ANSI_SCARLET);
+        }
+
 
         while (true) {
-            System.out.println("Введите информацию о студенте (для завершения работы программы введите 'end')");
-            student = scanner.nextLine();
-            if ((student.toLowerCase().equals("end") || (student.toLowerCase().equals("утв")))) {
-                System.out.println("\nСписок студентов");
-                listStudents(hashSet);
-                break;
-            } else {
-                HashSet<Student> stdIi2 = setNewStudent(student, hashSet);
+            try {
+                System.out.println("Введите информацию о студенте (для завершения работы программы введите 'end')");
+                String student = scanner.nextLine();
+                if ((student.toLowerCase().equals("утв") || (student.toLowerCase().equals("end")))) {
+                    System.out.println("\nСписок студентов:");
+                    listStudents(hashSet);
+                    break;
+                } else {
+                    setNewStudent(student, hashSet);
+                }
+            } catch (Exception e) {
+                eConsole("Данные введены некорректно.", ANSI_SCARLET);
             }
         }
+
+    }
+
+    private static void eConsole(String eMessage, String color) {
+        System.out.println(color + eMessage + ANSI_RESET);
     }
 
     @NotNull
     private static HashSet<Student> setNewStudent(String student, HashSet<Student> hashSet) throws Exception {
-        //String stdIi = "Иванов Петр Николаевич, 1243-Б, 31231343";
-        //String studentTt = "Петрова Татьяна Михайловна, 1243-Б, 43221343";
+        //"Иванов Петр Николаевич, 1243-Б, 31231343";
+        //"Петрова Татьяна Михайловна, 1243-Б, 43221343";
         String[] std = student.split(",");
-        if (getHasID(std[2], hashSet)) {
+        if (containsHasID(std[2], hashSet)) {
             hashSet.add((Student) new Student().addStudent(std[0], std[1], std[2]));
             return hashSet;
         }
         return hashSet;
     }
 
-    private static boolean getHasID(String id, HashSet<Student> hashSet) {
+    private static boolean containsHasID(String studentId, HashSet<Student> hashSet) {
         for (Object li : hashSet) {
-            if (String.valueOf(li).contains(id)) {
-                System.out.printf("Ошибка! Контакт уже есть в системе: \n" + li + "\n\n");
+            if (String.valueOf(li).contains(studentId)) {
+                System.out.print(ANSI_SCARLET + "Ошибка! Контакт уже есть в системе: \n" + li + ANSI_RESET + "\n\n");
                 return false;
             }
         }
@@ -48,9 +65,10 @@ public class Main {
     }
 
     private static void listStudents(HashSet<Student> hashSet) {
-        Iterator i = hashSet.iterator();
+        Iterator<Student> i = hashSet.iterator();
+        int num = 1;
         while (i.hasNext()) {
-            System.out.println(i.next());
+            System.out.println(num++ + ".)" + i.next());
         }
     }
 }

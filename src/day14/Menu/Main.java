@@ -33,24 +33,37 @@ public class Main extends Exception {
                     case ("ADD"): {
                         System.out.println("Choice 1 " + showMenu.getMenuCommand(0));
                         showMenu = productMenu;
+                        break;
                     }
-                    case ("DELETE"):
+                    case ("DELETE"): {
                         System.out.println("Choice 2 " + showMenu.getMenuCommand(1));
-                    case ("SHOW"):
+                        break;
+                    }
+                    case ("SHOW"): {
                         System.out.println("Choice 3 " + showMenu.getMenuCommand(2));
+                        break;
+                    }
                     case ("EXIT"): {
                         System.out.println("Choice 0 " + showMenu.getMenuCommand(3));
                         flag = true;
+                        break;
                     }
-                    case ("SHOWONION"):
+                    case ("SHOWONION"): {
                         System.out.println("Choice 1 " + showMenu.getMenuCommand(0));
-                    case ("SHOWCARROT"):
+                        break;
+                    }
+                    case ("SHOWCARROT"): {
                         System.out.println("Choice 2 " + showMenu.getMenuCommand(1));
-                    case ("SHOW_TOMATO"):
+                        break;
+                    }
+                    case ("SHOW_TOMATO"): {
                         System.out.println("Choice 3 " + showMenu.getMenuCommand(2));
+                        break;
+                    }
                     case ("RETURN"): {
                         System.out.println("Choice 0 " + showMenu.getMenuCommand(3));
                         showMenu = mainMenu;
+                        break;
                     }
                 }
             } catch (Exception e) {
