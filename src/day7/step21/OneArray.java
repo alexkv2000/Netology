@@ -2,6 +2,9 @@ package day7.step21;
 
 import java.util.Scanner;
 
+import static day7.step21.AnsiColor.ANSI_RED;
+import static day7.step21.AnsiColor.ANSI_RESET;
+
 /**
  * @author KAU
  * @project Netology
@@ -32,19 +35,27 @@ public class OneArray {
 
         while (true) {
             SeparateStr("Выберите товар и количество или введите `end`");
+            System.out.print("Выбор продукта: ");
             Scanner scanner = new Scanner(System.in);
-            String str = scanner.next();
-            if (str.equals("end")) {
-                SeparateStr("Пользователь вышел из программы...");
-                break;
-            }
-            int nTovar = Integer.parseInt(str);
-            int conunt = Integer.parseInt(scanner.next());
+            try {
+                String str = scanner.nextLine();
+                if (str.toLowerCase().equals("end") || str.toLowerCase().equals("утв")) {
+                    SeparateStr("Пользователь вышел из программы...");
+                    break;
+                }
+                String[] tempArray = str.split(" ");
+                int nTovar = Integer.valueOf(tempArray[0]);
+                int conunt = Integer.valueOf(tempArray[1]);
 
-            choices[nTovar - 1] += conunt;
-            System.out.println(str + "  " + conunt);
-            enterReceipt(names, prices, choices);
-            listOfProducts(names, prices); //список продуктов - вывод экран
+                choices[nTovar - 1] += conunt;
+                System.out.println(str + "  " + conunt);
+                enterReceipt(names, prices, choices);
+                listOfProducts(names, prices); //список продуктов - вывод экран
+            } catch (ArrayIndexOutOfBoundsException eOut) {
+                System.out.println(ANSI_RED + "выбранного товара нет" + ANSI_RESET);
+            } catch (Exception e) {
+                System.out.println(ANSI_RED + "Ввели неверные данные" + ANSI_RESET);
+            }
         }
         enterReceipt(names, prices, choices);
     }
@@ -63,13 +74,13 @@ public class OneArray {
         SeparateStr("Наименование товара   Количество  Цена/за.ед  Общая стоимость");
         int sum = 0;
         for (int i = 0; i < choices.length; i++) {
-            if(choices[i]!=0){
+            if (choices[i] != 0) {
                 sum += (choices[i] * prices[i]);
-                System.out.printf("%2s. %-17s %10s %11s %16s %n",i+1, names[i], choices[i], prices[i], (choices[i] * prices[i]));
+                System.out.printf("%2s. %-17s %10s %11s %16s %n", i + 1, names[i], choices[i], prices[i], (choices[i] * prices[i]));
             }
         }
         SeparateStr();
-        System.out.printf("Итого %55s %n",sum);
+        System.out.printf("Итого %55s %n", sum);
     }
 
     private static void SeparateStr(String str) {
