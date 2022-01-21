@@ -1,16 +1,15 @@
-"Maksim Maksimovich Maksimov", "Men", "38", 4, 3
-"Maksim Maksimovich Maksimov", "Men", "38", 4, 3
-"Sergey Sergeevich Sergeev", "Men", "45", 3,
-"Ury Urevich Urev", "Men", "22", 5, 1
-"Ivan Ivanovich Ivanov", "Men", "22", 5, 2
-"Fedor Igorevich Ivanovich", "Men", "38", 5, 5
-"Alexey Igorevich Igorev", "Men", "38", 5, 5
-"Igor Urevich Igorev", "Men", "38", 2, 3
-"Eugene Igorevich Eugenevich", "Men", "38", 5, 4
-"Igor Sergeevich Igorev", "Men", "38", 2, 5
-"Igor Igorevich Igorev", "Men", "38", 2, 4
-"Alexey Alexeevich Alexeev", "Men", "37", 5, 5
-"Alena Alexeevna Nikisha", "Woman", "27", 4, 5
-"Elena Eugenevna Dubkova", "Woman", "25", 5, 5
-"Venera Maksimovna Esenina", "Woman", "29", 5, 4,
-"Nataliya Vyacheslavovna Nam", "Woman", "32", 4, 3
+Maksim Maksimovich Maksimov,Men,38,4,3
+Sergey Sergeevich Sergeev, Men,45,3,5
+Ury Urevich Urev,Men,22,5,1
+Ivan Ivanovich Ivanov,Men,22,5,2
+Fedor Igorevich Ivanovich,Men,38,5,5
+Alexey Igorevich Igorev,Men,38,5,5
+Igor Urevich Igorev,Men,38, 2,3
+Eugene Igorevich Eugenevich,Men,38,5,4
+Igor Sergeevich Igorev,Men,38,2,5
+Igor Igorevich Igorev,Men,38,2,4
+Alexey Alexeevich Alexeev,Men,37,5,5
+Alena Alexeevna Nikisha,Woman,27,4,5
+Elena Eugenevna Dubkova,Woman,25,5,5
+Venera Maksimovna Esenina,Woman,29,5,4
+Nataliya Vyacheslavovna Nam,Woman,32,4,3

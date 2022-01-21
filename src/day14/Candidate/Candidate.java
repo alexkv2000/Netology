@@ -57,6 +57,6 @@ public class Candidate {
 
     @Override
     public String toString() {
-        return String.format("\n%-28s, %7s, %7s", fio, relevance, rating);
+        return String.format("\n%-28s, %5s ,%7s, %7s", fio, sex, relevance, rating);
     }
 }
