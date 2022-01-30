@@ -3,9 +3,9 @@ package day8.step22;
 import java.util.Scanner;
 
 /**
- * @author KAU
- * @project Netology
- * @create 2021-12-22 20:52
+ * KAU
+ * Netology
+ * 2021-12-22 20:52
  */
 public class TicTacToe {
 
@@ -13,6 +13,8 @@ public class TicTacToe {
     public static final char EMPTY = '-';
     public static final char CROSS = 'X';
     public static final char ZERO = 'O';
+    int[][] i = new int[5][];
+
 
     public static void main(String[] args) {
         char[][] field = new char[SIZE][SIZE];

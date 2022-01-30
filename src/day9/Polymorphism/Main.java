@@ -19,19 +19,18 @@ public class Main {
             System.out.format("У игрока %d слотов с оружием,"
                     + " введите номер, чтобы выстрелить,"
                     + " -1 чтобы выйти%n", player.getSlotsCount());
-
             try {
                 slot = scanner.nextInt();
+                if ((slot == -1)) {
+                    System.out.println("Game over!");
+                    break;
+                }
+                System.out.println("Слот " + slot);
+                player.shotWithWeapon(slot);
             } catch (Exception e) {
                 System.out.println("Вводите нолько цыфры! Повторите еще раз.");
                 break;
             }
-            if ((slot == -1)) {
-                System.out.println("Game over!");
-                break;
-            }
-            System.out.println("Слот " + slot);
-            player.shotWithWeapon(slot);
         }
     }
 }

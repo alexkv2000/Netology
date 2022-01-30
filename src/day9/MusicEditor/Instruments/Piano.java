@@ -1,22 +1,25 @@
 package day9.MusicEditor.Instruments;
 
 import day9.MusicEditor.Instrument;
+import day9.MusicEditor.MusicInstruments;
 
 /**
- * @author KAU
- * @project Netology
- * @create 2021-12-27 18:46
+ * KAU
+ * Netology
+ * 2021-12-27 18:46
  */
-public class Piano extends DefInstrument implements Instrument {
-    String pianoInstrument = "\n                    ";
-    char ChPiano = '♪';
+public class Piano extends MusicInstruments implements Instrument {
+    String pianoInstrument = "";
+    char ChPiano = '!';
+    String name = "пианино - ";
 
     public Piano(int leng) {
+        super("Пианино");
         for (int i = 0; i < leng; i++) {
             if (Math.random() * 10 >= 4) {
-                pianoInstrument += String.valueOf(ch);
+                pianoInstrument += "  ";
             } else {
-                pianoInstrument += String.valueOf(ChPiano);
+                pianoInstrument += " " + ChPiano;
             }
         }
     }
@@ -26,7 +29,10 @@ public class Piano extends DefInstrument implements Instrument {
         return pianoInstrument;
     }
 
-    ;
+    @Override
+    public String getName() {
+        return name;
+    }
 
     @Override
     public String toString() {
