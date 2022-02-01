@@ -4,8 +4,8 @@ public class Main {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_GREEN = "\u001B[32m";
 
-    static final char CHARSTART = 'S';
-    static final char CHARFINISH = 'F';
+    static final char CHARSTART = 'Ч';
+    static final char CHARFINISH = 'Щ';
     static final char CHARSPINE = '*';
     static final char COMEB = 'N';
     static final char STEP = '+';
@@ -15,14 +15,16 @@ public class Main {
     public static void main(String[] args) {
 
         char[][] template = new char[][]{
-                {'.', '*', '*', '.', '.', '.', '.', '.'},
-                {'.', '.', '.', '*', '*', '.', '*', '.'},
-                {'*', '*', '.', '.', '.', '*', '.', '.'},
-                {'.', '.', '.', '*', '.', '.', '.', '.'},
-                {'.', '.', '*', '*', '.', '*', '*', '.'},
-                {'*', '.', '.', '.', '.', '.', '.', '.'},
-                {'.', '.', '*', '.', '*', '*', '*', '.'},
-                {'.', '.', '.', '*', '.', '.', '.', '.'}
+                {'.', '.', '.', '*', '*', '.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '*', '.', '*', '*', '.', '.'},
+                {'.', '.', '.', '*', '.', '*', '.', '.', '.', '*'},
+                {'.', '*', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.', '.', '*', '.', '.', '.'},
+                {'.', '.', '*', '.', '.', '*', '.', '.', '.', '.'},
+                {'.', '.', '.', '*', '.', '.', '*', '*', '*', '.'},
+                {'.', '.', '.', '.', '.', '.', '.', '*', '.', '.'},
+                {'.', '.', '.', '.', '.', '.', '.', '*', '.', '.'},
+                {'.', '.', '.', '.', '.', '*', '*', '.', '.', '.'}
         };
         char[][] pathArray = new char[template.length][template.length];
         start = new Cell(template.length, template.length);
