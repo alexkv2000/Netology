@@ -18,6 +18,7 @@ public class Main {
     private static final String ANSI_CYAN = "\u001b[36m"; // Голубой
     private static final String ANSI_WHITE = "\u001b[37m"; // Белый
     private static final String ANSI_RESET = "\u001B[0m"; // конец подцветки - черный фон
+    private static final String ANSI_CLEAR_TERMINAL = "\033[2J";
 
     public static void main(String[] args) throws UserNotFoundException, AccessDeniedException {
         Scanner scanner = new Scanner(System.in);

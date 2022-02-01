@@ -32,12 +32,15 @@ public class Student {
         this.studentId = studentId;
     }
 
-    public boolean isNotId(String studentId) {
-        return this.studentId == (studentId);
+    public boolean isId(String studentId) {
+        if (this.studentId == null) {
+            return false;
+        }
+        return this.studentId.equals(studentId);
     }
 
     public Object addStudent(String name, String group, String studentId) throws Exception {
-        if (isNotId(studentId)) {
+        if (isId(studentId)) {
             System.out.println("Error");
             return null;
         } else {
@@ -49,7 +52,6 @@ public class Student {
             } catch (Exception e) {
                 System.out.println("Error studentId");
             }
-
         }
         return this;
     }
@@ -58,8 +60,7 @@ public class Student {
     public String toString() {
         return "\t - '" + name + '\'' +
                 ", '" + group + '\'' +
-                ", '" + studentId + '\'' +
-                '}';
+                ", '" + studentId + '\'';
     }
 
     @Override

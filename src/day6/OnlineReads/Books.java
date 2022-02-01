@@ -9,37 +9,25 @@ import java.util.Date;
  * @project Netology
  * @create 2021-12-22 11:41
  */
-public class Books extends Author {
-    private int idBook; // порядковый номер пользователя
-    private String dateRegistered; // дата регистрации пользователя
+public class Books {
+    private int idBook; // порядковый номер
+    private String dateRegistered; // дата регистрации
     private String nameBook;
     private int countOfPages;
+    private Author author;
     private boolean statusBook; // статус книга выдана или нет (для Офлайна - пробы есть или нет в библиотеке)
-    private Class<User> userRead;
+    private User userRead;
     private String comments;
 
-    public void bookRead(Class<User> user, Books book) {
+    public void bookRead(User user, Books book) {
         if (book.statusBook) {
             this.statusBook = !this.statusBook;
-            userRead = user;
+            this.userRead = user;
         }
     }
 
     public String getNameBook() {
         return nameBook;
-    }
-
-    public void setNameBook(String nameBook, String author) {
-        this.idBook = GenerateNumBooks.getId();
-        this.dateRegistered = String.valueOf(new Date());
-        this.nameBook = nameBook;
-        setAuthor(author);
-        this.statusBook = false;
-    }
-
-    public void setNameOther(int countOfPages, String comments) {
-        this.countOfPages = countOfPages;
-        this.comments = comments;
     }
 
     public int getCountOfPages() {
@@ -69,14 +57,18 @@ public class Books extends Author {
     @Override
     public String toString() {
         System.out.printf("[Номер %s] Книга {%s - %s} - %s. %n Дата регистрации: %s %n кол-во страниц : %s %n    комментарий :%s %n ---------------------------------- %n",
-                this.idBook, this.nameBook, getAuthor(), (this.statusBook ? "выдан" : "в наличии"), this.dateRegistered, this.countOfPages, this.comments);
+                this.idBook, this.nameBook, this.author.getAuthor(), (this.statusBook ? "выдан" : "в наличии"), this.dateRegistered, this.countOfPages, this.comments);
 
         return "";
     }
 
-    public Books() {
-        super();
-        this.idBook = 0;
+    public Books(String nameBook, Author author, int countOfPages, String comments) {
+        this.idBook = GenerateNumBooks.getId();
         this.dateRegistered = String.valueOf(new Date());
+        this.nameBook = nameBook;
+        this.author = author;
+        this.countOfPages = countOfPages;
+        this.comments = comments;
+        this.statusBook = false;
     }
 }

@@ -3,9 +3,9 @@ package day9.Polymorphism;
 import day9.Polymorphism.weapon.*;
 
 /**
- * @author KAU
- * @project Netology
- * @create 2021-12-27 15:06
+ * KAU
+ * Netology
+ * 2021-12-27 15:06
  */
 
 public class Player {
@@ -19,7 +19,7 @@ public class Player {
     private final Weapon[] weaponSlots; //оружие
 
     public Player() {
-        // Снаряжаем нашего игрока
+        // Снаряжаем игрока
         weaponSlots = new Weapon[]{
                 new Automat(),
                 new Pistol(),
