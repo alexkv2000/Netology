@@ -1,75 +1,100 @@
 package kvo.denamix;
 
 public class Main {
-    static final char STEP = 'P';
-    static final char CHARTRUE = 'X';
-    static final char COMEB = 'N';
-    static final char CHARSPINE = '*';
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_GREEN = "\u001B[32m";
 
+    static final char CHARSTART = 'S';
+    static final char CHARFINISH = 'F';
+    static final char CHARSPINE = '*';
+    static final char COMEB = 'N';
+    static final char STEP = '+';
+
+    static final Cell finish = new Cell(0, 0);
+    static Cell start;
     public static void main(String[] args) {
 
         char[][] template = new char[][]{
-                {'-', '-', '-', '-'},
-                {'*', '*', '-', '-'},
-                {'-', '-', '*', '-'},
-                {'-', '-', '-', '-'}
+                {'.', '*', '*', '.', '.', '.', '.', '.'},
+                {'.', '.', '.', '*', '*', '.', '*', '.'},
+                {'*', '*', '.', '.', '.', '*', '.', '.'},
+                {'.', '.', '.', '*', '.', '.', '.', '.'},
+                {'.', '.', '*', '*', '.', '*', '*', '.'},
+                {'*', '.', '.', '.', '.', '.', '.', '.'},
+                {'.', '.', '*', '.', '*', '*', '*', '.'},
+                {'.', '.', '.', '*', '.', '.', '.', '.'}
         };
-        char[][] paintArray = new char[4][4];
-        int finishX = 0;
-        int finishY = 0;
-        int startX = template.length;
-        int startY = template.length;
-        int x = startX - 1;
-        int y = startY - 1;
-        paintArray[x][y] = STEP;
-        while (x > finishX || y > finishY) {
+        char[][] pathArray = new char[template.length][template.length];
+        start = new Cell(template.length, template.length);
+        Cell xy = new Cell(start.getXp() - 1, start.getYp() - 1);
 
-            if (stepLeftPossible(x, y, template, paintArray)) { // лево свободно
-                move(x, y - 1, paintArray, STEP); // добавляем координаты в paintArray[][]
-                y--;
-            } else if (stepUpPossible(x, y, template, paintArray)) { //вврех свободно
-                move(x - 1, y, paintArray, STEP);
-                x--;
+        pathArray[xy.getXp()][xy.getYp()] = CHARSTART;
+        while (xy.getXp() != finish.getXp() || xy.getYp() != finish.getYp()) {
+            if (stepLeftPossible(new Cell(xy.getXp(), xy.getYp()), template, pathArray)) { // лево свободно
+                move(new Cell(xy.getXp(), xy.getYp() - 1), pathArray); // добавляем координаты в paintArray[][]
+                xy.setYp(xy.getYp() - 1);
+            } else if (stepUpPossible(new Cell(xy.getXp(), xy.getYp()), template, pathArray)) { //вврех свободно
+                move(new Cell(xy.getXp() - 1, xy.getYp()), pathArray);
+                xy.setXp(xy.getXp() - 1);
             } else {
-                paintArray[x][y] = COMEB;
-                Cell cell = cameBack(x, y, paintArray, STEP); //ищем STEP = 'P' и переводим координаты на него
-                x = cell.getXp();
-                y = cell.getYp();
+                pathArray[xy.getXp()][xy.getYp()] = COMEB;
+                Cell cell = cameBack(new Cell(xy.getXp(), xy.getYp()), pathArray); //ищем STEP = 'P' и переводим координаты на него
+                if (cell != null) {
+                    xy.setXp(cell.getXp());
+                    xy.setYp(cell.getYp());
+                } else {
+                    System.out.println("путь не найден");
+                    break;
+                }
             }
-
-            consoleArray(paintArray);
-            System.out.println();
         }
-        consoleArray(template);
+        consoleArray(template, pathArray, false);
+        System.out.println();
+        consoleArray(template, pathArray, true);
     }
 
-    private static boolean stepUpPossible(int x, int y, char[][] template, char[][] paintArray) {
-        //TODO Проверить на paintArray на 'N' по координатам x y
-        return (x - 1 >= 0 && template[x - 1][y] != CHARSPINE) && (paintArray[x - 1][y] != COMEB);
+    private static boolean stepUpPossible(Cell cell, char[][] template, char[][] paintArray) {
+        return (cell.getXp() - 1 >= 0 && template[cell.getXp() - 1][cell.getYp()] != CHARSPINE) &&
+                (paintArray[cell.getXp() - 1][cell.getYp()] != COMEB);
     }
 
-    private static boolean stepLeftPossible(int x, int y, char[][] template, char[][] paintArray) {
-        //TODO Проверить на paintArray на 'N' по координатам x y
-        return (y - 1 >= 0 && template[x][y - 1] != CHARSPINE) && (paintArray[x][y - 1] != COMEB);
+    private static boolean stepLeftPossible(Cell cell, char[][] template, char[][] paintArray) {
+        return (cell.getYp() - 1 >= 0 && template[cell.getXp()][cell.getYp() - 1] != CHARSPINE) &&
+                (paintArray[cell.getXp()][cell.getYp() - 1] != COMEB);
     }
 
-    private static void move(int x, int y, char[][] paintArray, char ch) { // добавляем координаты в paintArray[][]
-        paintArray[x][y] = ch;
+    private static void move(Cell cell, char[][] paintArray) { // добавляем координаты в paintArray[][]
+        paintArray[cell.getXp()][cell.getYp()] = Main.STEP;
     }
 
-    private static Cell cameBack(int x, int y, char[][] paintArray, char ch) { //ищем STEP = 'P' и возвращаем координаты
-        if (x + 1 <= paintArray.length && paintArray[x + 1][y] == ch) {
-            x++;
-        } else if (y + 1 <= paintArray.length && paintArray[x][y + 1] == ch) {
-            y++;
+    private static Cell cameBack(Cell cell, char[][] paintArray) { //из указанной координаты ищем STEP = 'P' / CHARSTART = 'S'
+        if ((cell.getXp() + 1 < paintArray.length && paintArray[cell.getXp() + 1][cell.getYp()] == Main.STEP)
+                || (cell.getXp() + 1 < paintArray.length && paintArray[cell.getXp() + 1][cell.getYp()] == CHARSTART)) {
+            cell.setXp(cell.getXp() + 1);
+        } else if ((cell.getYp() + 1 < paintArray.length && paintArray[cell.getXp()][cell.getYp() + 1] == Main.STEP)
+                || (cell.getYp() + 1 < paintArray.length && paintArray[cell.getXp()][cell.getYp() + 1] == CHARSTART)) {
+            cell.setYp(cell.getYp() + 1);
+        } else {
+            return null;
         }
-        return new Cell(x, y);
+        return new Cell(cell.getXp(), cell.getYp());
     }
 
-    private static void consoleArray(char[][] template) {
-        for (char[] element : template) {
-            for (char el : element) {
-                System.out.print(el + " ");
+    private static void consoleArray(char[][] mapArray, char[][] pathArray, boolean onlyPath) {
+        pathArray[finish.getXp()][finish.getYp()] = mapArray[finish.getXp()][finish.getYp()] = CHARFINISH;
+        pathArray[start.getXp()-1][start.getYp()-1] = mapArray[start.getXp()-1][start.getYp()-1] = CHARSTART;
+        for (int i = 0; i < mapArray.length; i++) {
+            for (int j = 0; j < mapArray.length; j++) {
+                if (onlyPath) {
+                    System.out.print(pathArray[i][j] == STEP
+                            || pathArray[i][j] == CHARSTART
+                            || pathArray[i][j] == CHARFINISH ? ANSI_GREEN + pathArray[i][j] + ANSI_RESET + " " : mapArray[i][j] + " ");
+                } else {
+                    System.out.print((pathArray[i][j] == STEP
+                            || pathArray[i][j] == COMEB
+                            || pathArray[i][j] == CHARSTART
+                            || pathArray[i][j] == CHARFINISH) ? ANSI_GREEN + pathArray[i][j] + ANSI_RESET + " " : mapArray[i][j] + " ");
+                }
             }
             System.out.println();
         }
@@ -88,17 +113,16 @@ public class Main {
             return xp;
         }
 
-        public void setXp(char xp) {
-            this.xp = xp;
-        }
-
         public int getYp() {
             return yp;
         }
 
-        public void setYp(char yp) {
-            this.yp = yp;
+        public void setXp(int xp) {
+            this.xp = xp;
         }
 
+        public void setYp(int yp) {
+            this.yp = yp;
+        }
     }
 }
