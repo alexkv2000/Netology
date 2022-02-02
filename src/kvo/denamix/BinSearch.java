@@ -19,7 +19,7 @@ public class BinSearch {
     public static int startY;
 
     public static void main(String[] args) {
-        startCoordinate(8, 7);
+        startCoordinate(8, 9);
         find_path(field, startX, startY, new char[field.length][field.length]);
     }
 
@@ -64,18 +64,20 @@ public class BinSearch {
                 }
             }
         }
+
         memory[x][y] = 'N';
         return 'N';
     }
 
     private static void find_path(char[][] field, int x0, int y0, char[][] path) {
+
         int x = x0 - 1;
         int y = y0 - 1;
         char direction;
-        while (x >= 0 & y >= 0) {
+        while (x > 0 || y > 0) {
             direction = where_from(field, x, y, path);
             if (direction == 'N') {
-                System.out.println("нет пути");
+                System.out.println("нет такого пути");
                 break;
             } else if (direction == 'U') {
                 path[x][y] = '+';
