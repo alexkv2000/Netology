@@ -1,6 +1,6 @@
-package day9.Polymorphism.weapon;
+package day9.polymorphism.weapon;
 
-import day9.Polymorphism.Weapon;
+import day9.polymorphism.Weapon;
 
 /**
  * @author KAU
