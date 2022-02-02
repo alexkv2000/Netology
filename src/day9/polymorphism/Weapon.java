@@ -1,4 +1,4 @@
-package day9.Polymorphism;
+package day9.polymorphism;
 
 /**
  * @author KAU

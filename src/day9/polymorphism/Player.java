@@ -1,6 +1,7 @@
-package day9.Polymorphism;
+package day9.polymorphism;
 
-import day9.Polymorphism.weapon.*;
+
+import day9.polymorphism.weapon.*;
 
 /**
  * KAU
@@ -23,7 +24,7 @@ public class Player {
         weaponSlots = new Weapon[]{
                 new Automat(),
                 new Pistol(),
-                new RPG(),
+                new Rpg(),
                 new Slingshot(),
                 new Waterpistols()
         };
