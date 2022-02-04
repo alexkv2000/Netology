@@ -1,7 +1,5 @@
 package day13.PhoneDirectory;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.*;
 
 public class PhoneBook extends Contact {
@@ -65,7 +63,6 @@ public class PhoneBook extends Contact {
         }
     }
 
-    @NotNull
     private List<Contact> getContactsList(GroupContacts groupContacts) {
         List<Contact> contactList = listContacts.get(groupContacts);
         if (contactList == null) {

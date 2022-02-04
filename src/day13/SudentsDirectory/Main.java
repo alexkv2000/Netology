@@ -1,7 +1,5 @@
 package day13.SudentsDirectory;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.*;
 
 import static day13.SudentsDirectory.ConsolColor.*;
@@ -42,7 +40,6 @@ public class Main {
         System.out.println(color + eMessage + ANSI_RESET);
     }
 
-    @NotNull
     private static HashSet<Student> setNewStudent(String student, HashSet<Student> hashSet) throws Exception {
         //"Иванов Петр Николаевич, 1243-Б, 31231343";
         //"Петрова Татьяна Михайловна, 1243-Б, 43221343";

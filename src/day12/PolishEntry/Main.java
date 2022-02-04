@@ -1,7 +1,5 @@
 package day12.PolishEntry;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,7 +26,7 @@ public class Main {
         consolPop(sign);
     }
 
-    private static void addElementForMatcher(String input, Stack<String> sign, @NotNull Matcher matcher, boolean console) {
+    private static void addElementForMatcher(String input, Stack<String> sign, Matcher matcher, boolean console) {
         while (matcher.find()) {
             if (false) {
                 System.out.print(input.substring(matcher.start(), matcher.end()) + " ");
@@ -37,7 +35,7 @@ public class Main {
         }
     }
 
-    private static void addElementForMatcher(String input, LinkedList<Integer> numbers, @NotNull Matcher matcher, boolean console) {
+    private static void addElementForMatcher(String input, LinkedList<Integer> numbers, Matcher matcher, boolean console) {
         while (matcher.find()) {
             if (console) {
                 System.out.print(input.substring(matcher.start(), matcher.end()) + " ");
@@ -46,20 +44,20 @@ public class Main {
         }
     }
 
-    private static void consolPop(@NotNull Stack<String> sign) {
+    private static void consolPop(Stack<String> sign) {
         while (!sign.isEmpty()) {
             System.out.print(sign.peek() + " ");
             sign.pop();
         }
     }
 
-    private static void consolPop(@NotNull Queue<Integer> numbers) {
+    private static void consolPop(Queue<Integer> numbers) {
         while (!numbers.isEmpty()) {
             System.out.print(numbers.poll() + " ");
         }
     }
 
-    private static @NotNull Matcher getMatcher(String input, String reg) {
+    private static Matcher getMatcher(String input, String reg) {
         Pattern pattern = Pattern.compile(reg); //регистрируем шаблон
         return pattern.matcher(input); //сопоставляем с каждым символом текста
     }
