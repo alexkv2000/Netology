@@ -2,7 +2,7 @@ package kvo.denamix.trees;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array = {10, 13, 16, 19, 22, 25, 28, 31, 34, 37, 40, 43, 46, 49, 52};
+        int[] array = new int[]{10, 13, 16, 19, 22, 25, 28, 31, 34, 37, 40, 43, 46, 49, 52};
         int[] arr = new int[array.length];
         mark(array, 0, array.length - 1, 0, arr);
         build(array);
@@ -50,7 +50,7 @@ public class Main {
 
     private static int maxLevel(int[] arr) {
         int max = arr[0];
-        for (int i = 1; i < (int) arr.length; i++) {
+        for (int i = 1; i < arr.length; i++) {
             if (arr[i] > max) {
                 max = arr[i];
             }
