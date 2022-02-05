@@ -1,4 +1,4 @@
-package kvo.denamix;
+package kvo.denamix.binSearch;
 
 public class Main {
     public static final String ANSI_RESET = "\u001B[0m";
