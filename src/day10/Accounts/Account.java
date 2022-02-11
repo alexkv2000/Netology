@@ -2,7 +2,6 @@ package day10.Accounts;
 
 public abstract class Account {
 
-    //TODO Нельзя платить, Нельзя уходить в минус
     abstract void pay(int amount);
 
     abstract void transfer(Account account, int amount); //перевод со счета сумму

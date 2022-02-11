@@ -18,27 +18,16 @@ public class SortMerge {
 
     private static int[] merge(int[] left_sorted, int[] right_sorted) {
         int[] merge_sort = new int[left_sorted.length]; //array limit length
-        int iLeft = 0;  //counter array left_sorted
-        int iRight = 0; //counter array right_sorted
-        int iC = 0;     //counter array merge_sort
+        int indexLeft = 0;  //counter array merge_sort
+        int iCLeft = 0;     //index First array
+        int iCRight = 0;    //index Second array
 
-        while (iC < merge_sort.length) {
-            if (iLeft == left_sorted.length) { //if counter reach all elements in left_sorted
-                merge_sort[iC] = right_sorted[iRight]; // then give next element from right_sorted for merge_sort
-                iRight += 1;
-            } else if (iRight == right_sorted.length) { //if counter reach all elements in right_sorted
-                merge_sort[iC] = left_sorted[iLeft]; // then give next element from left_sorted for merge_sort
-                iLeft += 1;
+        while (indexLeft < merge_sort.length) {
+            if (left_sorted[iCLeft] > right_sorted[iCRight]) {
+                merge_sort[indexLeft++] = left_sorted[iCLeft++];
             } else {
-                if (left_sorted[iLeft] <= right_sorted[iRight]) {
-                    merge_sort[iC] = right_sorted[iRight];
-                    iRight += 1;
-                } else {
-                    merge_sort[iC] = left_sorted[iLeft];
-                    iLeft += 1;
-                }
+                merge_sort[indexLeft++] = right_sorted[iCRight++];
             }
-            iC += 1;
         }
         return merge_sort;
     }

@@ -6,12 +6,12 @@ import java.util.Date;
  * @author KAU
  */
 public class Book {
-    String name;
-    String author;
-    int countPage;
+    public String name;
+    public String author;
+    public int countPage;
     statusBook status;
     Date dateRegistered; // дата поступления книги
-    Boolean giveOut; //книга выдана
+    public Boolean giveOut; //книга выдана
 
     public enum statusBook {
         ORDER, //заказ

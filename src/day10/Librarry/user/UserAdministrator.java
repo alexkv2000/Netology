@@ -1,4 +1,8 @@
-package day10.Librarry;
+package day10.Librarry.user;
+
+import day10.Librarry.Administrator;
+import day10.Librarry.Book;
+import day10.Librarry.User;
 
 import java.util.Date;
 
@@ -14,7 +18,7 @@ public class UserAdministrator extends UserLibrarian implements Administrator {
         boolean bFind = false;
         for (Book b : books) {
             if (b.name.equals(sBook) || b.author.equals(sBook)) {
-                System.out.printf("Книга найдена: %s - %s. Статус - %s, выдана - {%s}. \n", b.name, b.author, b.status, b.giveOut);
+                System.out.printf("Книга найдена: %s - %s. Статус - %s, выдана - {%s}. \n", b.name, b.author, b.getStatus(), b.giveOut);
                 bFind = true;
             }
         }
@@ -30,7 +34,7 @@ public class UserAdministrator extends UserLibrarian implements Administrator {
         if (notification(user).equals("")) {
             user.takeBook(book, days);
         }
-        return user.book;
+        return user.getBook();
     }
 
     @Override
@@ -39,14 +43,14 @@ public class UserAdministrator extends UserLibrarian implements Administrator {
         String sNotify = "";
         if (user.getDateEnd() == null) {
             str = "Пользователь {%s} не имеет на руках книг.\n";
-            System.out.printf(str, user.fio);
+            System.out.printf(str, user.getFio());
             return sNotify;
         }
         if (user.getDateEnd().before(new Date())) {
             str = "ВНИМАНИЕ! {%s} Пора вернуть книгу {%s - %s} в библиотеку! Дата возврата: %s \n";
-            sNotify = user.dateEnd.toString();
+            sNotify = user.getDateEnd().toString();
         } else str = "{%s} взял книгу {%s - %s}. Дата возврата: %s \n";
-        System.out.printf(str, user.fio, user.book.name, user.book.author, user.dateEnd);
+        System.out.printf(str, user.getFio(), user.getBook().name, user.getBook().author, user.getDateEnd());
         return sNotify;
     }
 }

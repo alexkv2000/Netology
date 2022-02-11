@@ -1,4 +1,8 @@
-package day10.Librarry;
+package day10.Librarry.user;
+
+import day10.Librarry.Book;
+import day10.Librarry.Provider;
+import day10.Librarry.User;
 
 import static day10.Librarry.Book.statusBook.*;
 

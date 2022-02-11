@@ -7,5 +7,4 @@ public class Movie extends Event {
         super.releaseYear = releaseYear;
         super.age = age;
     }
-
 }
