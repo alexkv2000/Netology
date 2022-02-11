@@ -4,18 +4,15 @@ public class Graph {
     private int maxN = 6;
     private int[][] arrayGraph; // матрица графа (ребра)
     private Vertex[] vertexList; //список вершин label + посещение
-    private int curN;
     private MyStack stack = new MyStack(maxN);
 
     public Graph(int maxN) {
         this.maxN = maxN;
-        this.arrayGraph = new int[maxN][maxN];
         this.vertexList = new Vertex[maxN];
-        this.curN = 0;
-    }
-
-    public void addVertex(int name) {
-        vertexList[curN++] = new Vertex(name);
+        this.arrayGraph = new int[maxN][maxN];
+        for (int i = 0; i < maxN; i++) {
+            vertexList[i] = new Vertex(i);
+        }
     }
 
     public void addEdge(int start, int end) {
@@ -24,7 +21,7 @@ public class Graph {
     }
 
     public int check(int v) {
-        for (int i = 0; i < curN; i++) {
+        for (int i = 0; i < maxN; i++) {
             if (arrayGraph[v][i] == 1 && vertexList[i].isVisited == false) {
                 return i;
             }
@@ -43,7 +40,7 @@ public class Graph {
             int neighbour = check(stack.peek()); // берем соседа
 
             if (neighbour == -1) {
-                neighbour = stack.pop(); // сосей нет -> убираем из стека поиска вершину
+                neighbour = stack.pop(); // соседей нет -> убираем из стека поиска вершину
             } else {
                 count[index]++;
 //                System.out.print(vertexList[neighbour].V + " ");
@@ -52,7 +49,7 @@ public class Graph {
             }
         }
 
-        for (int i = 0; i < curN; i++) { // сбросим флаги для цикла обхода
+        for (int i = 0; i < maxN; i++) { // сбросим флаги для цикла обхода
             vertexList[i].isVisited = false;
         }
         return count[index];
