@@ -26,7 +26,7 @@ public class MainMenu extends Exception {
                 "3. Удалить задачу",
                 "__________________________________",
                 "0. Выход"};
-        if (colPointsMenuShow > myStringArray.length) {
+        if (colPointsMenuShow > myStringArray.length || colPointsMenuShow < 0) {
             colPointsMenuShow = myStringArray.length;
         }
         for (int i = 0; i < colPointsMenuShow; i++) {
