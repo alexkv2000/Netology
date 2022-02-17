@@ -1,6 +1,6 @@
 package kvo.graph;
 
-public class Vertex {
+public class Vertex<Integer> {
     private int V;
     boolean isVisited;
 

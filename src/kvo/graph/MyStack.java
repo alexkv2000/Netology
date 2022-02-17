@@ -1,6 +1,6 @@
 package kvo.graph;
 
-public class MyStack {
+public class MyStack<Integer> {
     private int index; // индекс элементов стека
     private int[] array; // массив вершин обхода
 

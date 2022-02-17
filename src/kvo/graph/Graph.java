@@ -1,10 +1,10 @@
 package kvo.graph;
 
-public class Graph {
+public class Graph<Integer> {
     private int maxN = 6;
     private final int[][] arrayGraph; // матрица графа (ребра)
-    private final Vertex[] vertexList; //список вершин label + посещение
-    private MyStack stack = new MyStack(maxN);
+    private final Vertex<Integer>[] vertexList; //список вершин label + посещение
+    private MyStack<Integer> stack = new MyStack(maxN);
 
     public Graph(int maxN) {
         this.maxN = maxN;
