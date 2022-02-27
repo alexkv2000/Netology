@@ -14,7 +14,7 @@ public class Main {
         System.out.println(input);
 
         LinkedList<Integer> numbers = new LinkedList<>(); //Очередь для цифр
-        Stack<String> sign = new Stack<>(); //Стек для операций
+        Deque<String> sign = new ArrayDeque<>(); //Стек для операций
 
         addElementForMatcher(input, numbers, getMatcher(input, "[\\d]+"), false);
         addElementForMatcher(input, sign, getMatcher(input, "[-*/+−]"), true);
@@ -26,12 +26,12 @@ public class Main {
         consolPop(sign);
     }
 
-    private static void addElementForMatcher(String input, Stack<String> sign, Matcher matcher, boolean console) {
+    private static void addElementForMatcher(String input, Deque<String> sign, Matcher matcher, boolean console) {
         while (matcher.find()) {
             if (false) {
                 System.out.print(input.substring(matcher.start(), matcher.end()) + " ");
             }
-            sign.add(input.substring(matcher.start(), matcher.end()));
+            sign.offerLast(input.substring(matcher.start(), matcher.end()));
         }
     }
 
@@ -44,10 +44,9 @@ public class Main {
         }
     }
 
-    private static void consolPop(Stack<String> sign) {
+    private static void consolPop(Deque<String> sign) {
         while (!sign.isEmpty()) {
-            System.out.print(sign.peek() + " ");
-            sign.pop();
+            System.out.print(sign.pollLast() + " ");
         }
     }
 

@@ -4,7 +4,7 @@ import java.util.*;
 
 public class PhoneBook extends Contact {
 
-    HashMap<GroupContacts, List<Contact>> listContacts = new HashMap<GroupContacts, List<Contact>>();
+    HashMap<GroupContacts, List<Contact>> listContacts = new HashMap<>();
 
     public PhoneBook() {
     }

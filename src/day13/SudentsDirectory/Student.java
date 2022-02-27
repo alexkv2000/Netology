@@ -39,7 +39,7 @@ public class Student {
         return this.studentId.equals(studentId);
     }
 
-    public Object addStudent(String name, String group, String studentId) throws Exception {
+    public Student addStudent(String name, String group, String studentId) throws Exception {
         if (isId(studentId)) {
             System.out.println("Error");
             return null;
