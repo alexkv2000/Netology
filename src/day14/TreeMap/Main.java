@@ -53,7 +53,6 @@ public class Main {
         phoneBook.searchContact(myGroup, Alex);
         phoneBook.searchContact(allGroup, Jhon);
 
-        //поиск Контакта по номеру телефона
         System.out.println("***************************************************");
         System.out.println("*       поиск Контакта по номеру телефона         *");
         System.out.println("***************************************************");

@@ -17,7 +17,6 @@ public class Main {
             eConsole("Данные введены некорректно.", ANSI_SCARLET);
         }
 
-
         while (true) {
             try {
                 System.out.println("Введите информацию о студенте (для завершения работы программы введите 'end')");
@@ -33,7 +32,6 @@ public class Main {
                 eConsole("Данные введены некорректно.", ANSI_SCARLET);
             }
         }
-
     }
 
     private static void eConsole(String eMessage, String color) {
@@ -44,21 +42,10 @@ public class Main {
         //"Иванов Петр Николаевич, 1243-Б, 31231343";
         //"Петрова Татьяна Михайловна, 1243-Б, 43221343";
         String[] std = student.split(",");
-        if (containsHasID(std[2], hashSet)) {
-            hashSet.add((Student) new Student().addStudent(std[0], std[1], std[2]));
-            return hashSet;
+        if (!hashSet.add(new Student(std[0], std[1], std[2]))) {
+            System.out.print(ANSI_SCARLET + "Ошибка! Контакт уже есть в системе: \n" + std[0] + " " + std[1] + " " + std[2] + ANSI_RESET + "\n\n");
         }
         return hashSet;
-    }
-
-    private static boolean containsHasID(String studentId, HashSet<Student> hashSet) {
-        for (Object li : hashSet) {
-            if (String.valueOf(li).contains(studentId)) {
-                System.out.print(ANSI_SCARLET + "Ошибка! Контакт уже есть в системе: \n" + li + ANSI_RESET + "\n\n");
-                return false;
-            }
-        }
-        return true;
     }
 
     private static void listStudents(HashSet<Student> hashSet) {

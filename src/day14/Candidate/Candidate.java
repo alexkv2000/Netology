@@ -15,44 +15,12 @@ public class Candidate {
         this.rating = rating;
     }
 
-    public String getFio() {
-        return fio;
-    }
-
-    public void setFio(String fio) {
-        this.fio = fio;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
-
     public int getRelevance() {
         return relevance;
     }
 
-    public void setRelevance(int relevance) {
-        this.relevance = relevance;
-    }
-
     public int getRating() {
         return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
     }
 
     @Override

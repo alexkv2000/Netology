@@ -23,10 +23,10 @@ public class Contact {
     public Contact setName(String name, String phoneNumber) {
         return new Contact(this.name = name, this.phoneNumber = phoneNumber);
     }
-
+/*
     public String getPhoneNumber() {
         return this.phoneNumber;
-    }
+    }*/
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;

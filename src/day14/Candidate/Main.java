@@ -27,7 +27,7 @@ public class Main {
                 String sAge = paramCandidate[2].replaceAll(" ", "");
                 int iRelevance = Integer.parseInt(paramCandidate[3].replaceAll(" ", ""));
                 int iRating = Integer.parseInt(paramCandidate[4].replaceAll(" ", ""));
-                addCandidat(paramCandidate[0], paramCandidate[1], sAge, iRelevance, iRating, treeSet);
+                addCandidat(paramCandidate[0], paramCandidate[1], sAge, iRelevance, iRating, treeSet, treeSetReversed);
                 sTemp = new StringBuilder();
             } else if (charForStreem != '\r') {
                 sTemp.append((char) charForStreem);
@@ -56,7 +56,7 @@ public class Main {
         boolean flag = false;
         while (!flag) {
             try {
-                System.out.print("Сортировать по Relevance (1) rating (2) Exit (0): ");
+                System.out.print("Сортировать по Relevance & rating (1) revers (2) Exit (0): ");
                 String menuChoice = scanner.nextLine();
                 switch (Integer.parseInt(menuChoice)) {
                     case 0: {
@@ -71,8 +71,6 @@ public class Main {
                     }
                     case 2: {
                         System.out.println("             ФИО            ,  Пол , Резюме , Собеседование");
-                        treeSetReversed.clear();
-                        treeSetReversed.addAll(treeSet);
                         showTerminal(treeSetReversed);
                         break;
                     }
@@ -91,8 +89,9 @@ public class Main {
         System.out.println(treeSet);
     }
 
-    private static void addCandidat(String fio, String sex, String age, int relevance, int rating, TreeSet<Candidate> treeSet) {
+    private static void addCandidat(String fio, String sex, String age, int relevance, int rating, TreeSet<Candidate> treeSet, TreeSet<Candidate> treeSetReversed) {
         treeSet.add(new Candidate(fio, sex, age, relevance, rating));
+        treeSetReversed.add(new Candidate(fio, sex, age, relevance, rating));
     }
 }
 

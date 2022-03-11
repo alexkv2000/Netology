@@ -31,18 +31,15 @@ public class Main {
     }
 
     private static void console(Queue<Integer> queue) {
-        StringBuilder str = new StringBuilder();
-        str.append("Этаж " + queue.poll());
+        System.out.print("Этаж " + queue.poll() + " -> ");
+
         while (!queue.isEmpty()) {
             if (queue.peek() != 0) {
-                if (!str.equals("")) {
-                    str.append(" -> ");
-                }
-                str.append("Этаж " + queue.poll());
+                System.out.print(" Этаж -> " + queue.poll());
             } else if (queue.peek() == 0) {
-                str.append(" Этаж - " + queue.poll());
+                System.out.print(" Этаж - " + queue.poll());
             }
         }
-        System.out.printf("Лифт проследовал по следующим этажам:\n%s", str);
+        System.out.println();
     }
 }

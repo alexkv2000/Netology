@@ -11,6 +11,19 @@ public class namecomp implements Comparator<Candidate> {
         } else if (paramT1.getRelevance() == (paramT2.getRelevance())) {
             if (paramT1.getRating() > (paramT2.getRating())) {
                 return -1;
+            }
+        }
+        return 1;
+    }
+}
+
+
+/*
+        if (paramT1.getRelevance() > (paramT2.getRelevance())) {
+            return -1;
+        } else if (paramT1.getRelevance() == (paramT2.getRelevance())) {
+            if (paramT1.getRating() > (paramT2.getRating())) {
+                return -1;
             } else if (paramT1.getRating() == (paramT2.getRating())) {
                 return 1;
             } else {
@@ -19,4 +32,4 @@ public class namecomp implements Comparator<Candidate> {
         }
         return 1;
     }
-}
+*/

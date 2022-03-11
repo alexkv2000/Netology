@@ -19,9 +19,9 @@ public class PhoneBook extends Contact {
     }
 
 
-    public void setListContacts(HashMap<GroupContacts, List<Contact>> listContacts) {
+/*    public void setListContacts(HashMap<GroupContacts, List<Contact>> listContacts) {
         this.listContacts = listContacts;
-    }
+    }*/
 
     public void setListContacts(GroupContacts group, List<Contact> contactList) {
         this.listContacts.put(group, contactList);
@@ -35,9 +35,9 @@ public class PhoneBook extends Contact {
                 '}';
     }
 
-    public void findContactsGroup(GroupContacts group) {
+  /*  public void findContactsGroup(GroupContacts group) {
         System.out.println(listContacts.get(group));
-    }
+    }*/
 
     public GroupContacts addGroup(String group) {
         return new GroupContacts(group);
@@ -104,7 +104,6 @@ public class PhoneBook extends Contact {
                     if (visible) {
                         System.out.printf("%s%s найден%s\n", ANSI_GREEN, li.toString().replaceAll("\n", "").replaceAll("\t", ""), ANSI_RESET);
                     }
-                    //TODO проверить на наличие в списке, если есть НЕ добавляем повторные
                     listnew.add(li);
                     flag = true;
                     break;
