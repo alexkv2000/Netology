@@ -8,8 +8,8 @@ public interface TextGraphicsConverter {
      * Конвертация изображения, переданного как урл, в текстовую графику.
      * @param url урл изображения
      * @return текст, представляющий собой текстовую графику переданного изображения
-     * @throws IOException
-     * @throws BadImageSizeException Если соотношение сторон изображения слишком большое
+     * IOException
+     * BadImageSizeException Если соотношение сторон изображения слишком большое
      */
     String convert(String url) throws IOException, BadImageSizeException;
 
@@ -33,13 +33,13 @@ public interface TextGraphicsConverter {
      * Устанавливает максимально допустимое соотношение сторон исходного изображения.
      * Если исходное изображение имеет характеристики, превышающие максимальные,
      * при конвертации выбрасывается исключение.
-     * @param maxRatio
+     * maxRatio
      */
     void setMaxRatio(double maxRatio);
 
     /**
      * Устанавливает символьную цветовую схему, которую будет использовать конвертер
-     * @param schema
+     * schema
      */
-    void setTextColorSchema(TextColorSchema schema);
+    void setTextColorSchema(String schema);
 }

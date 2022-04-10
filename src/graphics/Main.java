@@ -1,14 +1,13 @@
 package graphics;
 
+import graphics.image.Convert;
+import graphics.image.SchemaImage;
 import graphics.image.TextGraphicsConverter;
 import graphics.server.GServer;
 
-import java.io.File;
-import java.io.PrintWriter;
-
 public class Main {
     public static void main(String[] args) throws Exception {
-        TextGraphicsConverter converter = null; // Создайте тут объект вашего класса конвертера
+        TextGraphicsConverter converter = new Convert(600, 1200, 0, new SchemaImage()); // Создайте тут объект вашего класса конвертера
 
         GServer server = new GServer(converter); // Создаём объект сервера
         server.start(); // Запускаем
